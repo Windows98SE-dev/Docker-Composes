@@ -1,0 +1,181 @@
+services:
+  radarr:
+    image: linuxserver/radarr:latest
+    container_name: radarr
+    labels:
+      - "com.centurylinklabs.watchtower.enable=true"
+    ports:
+      - "7878:7878"
+    volumes:
+      - "F:/docker_configs/radarr/config:/config"
+      - "M:/downloads:/downloads"
+      - "M:/movies:/movies"
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=Europe/Zurich
+    restart: unless-stopped
+
+  prowlarr:
+    image: linuxserver/prowlarr:latest
+    container_name: prowlarr
+    labels:
+      - "com.centurylinklabs.watchtower.enable=true"
+    ports:
+      - "9696:9696"
+    volumes:
+      - "F:/docker_configs/prowlarr/config:/config"
+      - "M:/downloads:/downloads"
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=Europe/Zurich
+    restart: unless-stopped
+
+  sonarr:
+    image: linuxserver/sonarr:latest
+    container_name: sonarr
+    labels:
+      - "com.centurylinklabs.watchtower.enable=true"
+    ports:
+      - "8989:8989"
+    volumes:
+      - "F:/docker_configs/sonarr/config:/config"
+      - "M:/downloads:/downloads"
+      - "M:/anime:/anime"
+      - "M:/tv:/tv"
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=Europe/Zurich
+    restart: unless-stopped
+
+  lidarr:
+    image: linuxserver/lidarr:latest
+    container_name: lidarr
+    labels:
+      - "com.centurylinklabs.watchtower.enable=true"
+    ports:
+      - "8686:8686"
+    volumes:
+      - "F:/docker_configs/lidarr/config:/config"
+      - "M:/downloads:/downloads"
+      - "M:/music:/music"
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=Europe/Zurich
+    restart: unless-stopped
+
+  # sabnzbd:
+  #   image: linuxserver/sabnzbd:latest
+  #   container_name: sabnzbd
+  #   labels:
+  #     - "com.centurylinklabs.watchtower.enable=true"
+  #   ports:
+  #     - "8082:8080"
+  #     - "9092:9090"
+  #   volumes:
+  #     - "F:/docker_configs/sabnzbd/config:/config"
+  #     - "M:/downloads:/downloads"
+  #   environment:
+  #     - PUID=1000
+  #     - PGID=1000
+  #     - TZ=Europe/Zurich
+  #   restart: unless-stopped
+
+  qbittorrent:
+    image: linuxserver/qbittorrent:latest
+    container_name: qbittorrent
+    labels:
+      - "com.centurylinklabs.watchtower.enable=true"
+    ports:
+      - "8080:8080"
+      - "6881:6881"
+      - "6881:6881/udp"
+    volumes:
+      - "F:/docker_configs/qbittorrent/config:/config"
+      - "M:/downloads:/downloads"
+      - "M:/anime:/anime"
+      - "M:/tv:/tv"
+      - "M:/movies:/movies"
+      - "M:/music:/music"
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=Europe/Zurich
+    restart: unless-stopped
+
+  flaresolverr:
+    image: flaresolverr/flaresolverr:latest
+    container_name: flaresolverr
+    labels:
+      - "com.centurylinklabs.watchtower.enable=true"
+    volumes:
+      - "F:/docker_configs/flaresolverr/config:/config"
+    ports:
+      - "8191:8191"
+      - "8192:8192"
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=Europe/Zurich
+    restart: unless-stopped
+
+
+  seer:
+    image: seerr/seerr:latest
+    container_name: seer
+    labels:
+      - "com.centurylinklabs.watchtower.enable=true"
+    ports:
+      - "5055:5055"
+    volumes:
+      - "F:/docker_configs/seer/config:/app/config"
+      - "M:/downloads:/downloads"
+      - "M:/anime:/anime"
+      - "M:/tv:/tv"
+      - "M:/movies:/movies"
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=Europe/Zurich
+    restart: unless-stopped
+
+  seedr:
+    image: ghcr.io/rursache/seedr:latest
+    container_name: seedr
+    labels:
+      - "com.centurylinklabs.watchtower.enable=true"
+    ports:
+      - "49152:49152"
+      - "8084:8080"
+    volumes:
+       - "F:/docker_configs/seedr/config:/data"
+       - "M:/downloads:/downloads"
+       - "M:/anime:/anime"
+       - "M:/tv:/tv"
+       - "M:/movies:/movies"
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=Europe/Zurich
+    restart: unless-stopped
+  
+    
+
+  navidrome:
+    image: deluan/navidrome:latest
+    container_name: navidrome
+    labels:
+      - "com.centurylinklabs.watchtower.enable=true"
+    ports:
+      - "4533:4533"
+    volumes:
+      - "F:/docker_configs/navidrome/config:/data"
+      - "M:/music:/music"
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=Europe/Zurich
+    restart: unless-stopped

@@ -1,0 +1,17 @@
+services:
+  watchtower:
+    image: nickfedor/watchtower:latest
+    container_name: watchtower
+    command: --cleanup --label-enable
+    volumes:
+      - "/var/run/docker.sock:/var/run/docker.sock"
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=Europe/Zurich
+      - WATCHTOWER_NOTIFICATION_URL=NOWEBHOOK4U
+      - WATCHTOWER_NOTIFICATION_TEMPLATE={{range .}}{{.Message}}{{println}}{{end}}
+      - WATCHTOWER_NOTIFICATIONS_LEVEL=info
+      - WATCHTOWER_POLL_INTERVAL=3600
+      - WATCHTOWER_CLEANUP=true
+    restart: unless-stopped

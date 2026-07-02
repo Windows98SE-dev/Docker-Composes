@@ -1,0 +1,15 @@
+services:
+  deemix:
+   image: ghcr.io/bambanah/deemix:latest
+   environment:
+    - PUID=1000
+    - PGID=1000
+    - TZ=Europe/Zurich
+   volumes:
+    - F:/docker_configs/deemix/config:/config
+    - M:/downloads:/downloads
+   ports:
+    - 6595:6595
+   restart: unless-stopped
+   labels:
+    - "com.centurylinklabs.watchtower.enable=true"

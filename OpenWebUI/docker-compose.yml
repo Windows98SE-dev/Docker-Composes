@@ -1,0 +1,17 @@
+services:
+ openwebui:
+  image: ghcr.io/open-webui/open-webui:cuda
+  container_name: openwebui
+  environment:
+    - PUID=1000
+    - PGID=1000
+    - TZ=Europe/Zurich
+  restart: always
+  ports:
+    - "3000:8080"
+  annotations:
+    - "com.centurylinklabs.watchtower.enable=true"
+  extra_hosts:
+    - "host.docker.internal:host-gateway"
+  volumes:
+    - F:/OpenWebUI:/app/backend/data

@@ -1,0 +1,15 @@
+services:
+  dbgate:
+    container_name: dbgate
+    image: dbgate/dbgate:latest
+    restart: unless-stopped
+    labels:
+      - "com.centurylinklabs.watchtower.enable=true"
+    ports:
+      - "8085:8080"
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=Europe/Zurich
+    volumes:
+      - F:/docker_configs/dbgate/config:/config
