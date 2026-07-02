@@ -1,0 +1,13 @@
+services:
+  soulseek:
+    image: realies/soulseek
+    container_name: soulseek
+    restart: unless-stopped
+    ports:
+      - 6080:6080
+    volumes:
+      - F:/docker_configs:/data/.SoulseekQt
+      - M:/downloads:/data/Soulseek Downloads
+      - M:/shared:/data/Soulseek Shared Folder
+    annotations:
+     - "com.centurylinklabs.watchtower.enable=true"

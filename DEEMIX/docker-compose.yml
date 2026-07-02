@@ -11,5 +11,5 @@ services:
    ports:
     - 6595:6595
    restart: unless-stopped
-   labels:
-    - "com.centurylinklabs.watchtower.enable=true"
+   annotations:
+     - "com.centurylinklabs.watchtower.enable=true"
