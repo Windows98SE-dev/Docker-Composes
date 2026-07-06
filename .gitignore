@@ -1,2 +1,3 @@
 .env
 WATCHTOWER/docker-compose.yml
+PLAYLISTDL/docker-compose.yml
