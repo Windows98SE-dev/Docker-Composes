@@ -12,3 +12,5 @@ services:
       - CLEANUP_INTERVAL=300
     volumes:
       - M:/playlist_music:/music
+    annotations:
+     - "com.centurylinklabs.watchtower.enable=true"
