@@ -1,0 +1,16 @@
+services:
+  playlistdl:
+    image: tanner23456/playlistdl:v2
+    container_name: playlistdl
+    ports:
+      - "8800:5000"
+    environment:
+      - ADMIN_USERNAME=
+      - ADMIN_PASSWORD=
+
+      - AUDIO_DOWNLOAD_PATH=
+      - CLEANUP_INTERVAL=300  # Optional
+    volumes:
+      -
+
+
